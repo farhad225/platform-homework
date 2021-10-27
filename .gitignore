@@ -1,0 +1,7 @@
+.DS_Store
+.vscode
+**/.DS_Store
+__pycache__/
+tests/__pycache__/
+database.db
+test_database.db
