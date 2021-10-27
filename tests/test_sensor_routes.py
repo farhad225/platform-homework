@@ -190,8 +190,15 @@ class SensorRoutesTestCases(unittest.TestCase):
         # And the response data should have one sensor reading
         self.assertTrue(len(json.loads(request.data)) == 1)
 
+        # And when we check for minimum value in the db
+        conn = sqlite3.connect('test_database.db')
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        cur.execute('select * from readings where device_uuid="{}" and type="{}" order by value asc limit 1'.format(self.device_uuid, "temperature"))
+        rows = cur.fetchall()
+
         # And the maximum value should be 100
-        self.assertEqual(json.loads(request.data)[0]['value'], 22)
+        self.assertEqual(json.loads(request.data)[0]['value'], rows[0]['value'])
 
     def test_device_readings_max(self):
         # Given a device UUID
@@ -208,8 +215,15 @@ class SensorRoutesTestCases(unittest.TestCase):
         # And the response data should have one sensor reading
         self.assertTrue(len(json.loads(request.data)) == 1)
 
+        # And when we check for minimum value in the db
+        conn = sqlite3.connect('test_database.db')
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        cur.execute('select * from readings where device_uuid="{}" and type="{}" order by value desc limit 1'.format(self.device_uuid, "temperature"))
+        rows = cur.fetchall()
+
         # And the maximum value should be 100
-        self.assertEqual(json.loads(request.data)[0]['value'], 100)
+        self.assertEqual(json.loads(request.data)[0]['value'], rows[0]['value'])
 
     def test_device_readings_median(self):
         # Given a device UUID
