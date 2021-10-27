@@ -5,7 +5,7 @@ This service requires Python3.
 
 A docker-compose and Dockerfile has been created to run this application in a container.
 
-In order to run the webserver, use `docker-compose up` with a running docker environment.
+In order to run the webserver, use `docker-compose up --build` with a running docker environment.
 
 ## API Endpoints
 
@@ -26,6 +26,7 @@ Create a reading for a device. The sensor type can be temperature or humidity an
 
 - ``201 success``: The reading is successfully created
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 
 ### Fetch readings based on device uuid
@@ -66,6 +67,7 @@ Fetches data from the provided device uuid. The sensor type, start and end date 
         ]
 
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 ### Calculates max reading value based on device uuid
 
@@ -93,6 +95,7 @@ Calculates the maximum value from the provided device uuid. The start and end da
         ]
 
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 ### Calculates min reading value based on device uuid
 
@@ -120,6 +123,7 @@ Calculates the minimum value from the provided device uuid. The start and end da
         ]
 
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 ### Calculates median reading value based on device uuid
 
@@ -147,6 +151,7 @@ Calculates the median value from the provided device uuid. The start and end dat
         ]
 
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 ### Calculates mean reading value based on device uuid
 
@@ -169,6 +174,7 @@ Calculates the mean value from the provided device uuid. The start and end date 
         }
 
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 ### Calculates mode reading value based on device uuid
 
@@ -191,6 +197,7 @@ Calculates the mode value from the provided device uuid. The start and end date 
         }
 
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 ### Calculates first and third quartile values based on device uuid
 
@@ -214,6 +221,7 @@ Calculates the first and third quartile value from the provided device uuid.
         }
 
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 ### Generate Summary for devices
 
@@ -253,6 +261,7 @@ Generates a summary of statistical information for each device uuid. The query p
         ]
 
 - ``400 Bad Request``: Malformed request.
+- ``500 Server Error``: Server Exception.
 
 ## Testing
 
